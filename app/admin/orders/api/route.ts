@@ -1,11 +1,6 @@
-import { prisma } from "@/src/lib/prisma";
-
-export const dynamic = "force-dynamic";
-
+import { prisma } from "@/src/generated/prisma/lib/prisma";
 
 export async function GET() {
-
-
   const orders = await prisma.order.findMany({
     where: {
       status: false,

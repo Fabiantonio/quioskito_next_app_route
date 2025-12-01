@@ -1,6 +1,6 @@
 "use server"
 
-import { prisma } from "@/src/lib/prisma";
+import { prisma } from "@/src/generated/prisma/lib/prisma";
 import { ProductSchema } from "@/src/schema";
 import { revalidatePath } from "next/cache";
 

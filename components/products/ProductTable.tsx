@@ -1,4 +1,4 @@
-import { Category, Product } from "@prisma/client";
+import { Category, Product } from "@/src/generated/prisma/client";
 import { formatCurrency } from "@/src/utils";
 import Link from "next/link";
 
