@@ -1,7 +1,7 @@
 import ProductSearchForm from "@/components/products/ProductSearchForm";
 import ProductTable from "@/components/products/ProductTable";
 import Heading from "@/components/ui/Heading";
-import { prisma } from "@/src/generated/prisma/lib/prisma";
+import { prisma } from "@/src/lib/prisma";
 
 async function searchProducts(SearchTerm: string) {
   const products = await prisma.product.findMany({
