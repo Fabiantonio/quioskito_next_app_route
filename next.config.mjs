@@ -18,15 +18,9 @@ const nextConfig = {
       },
     ],
   },
-   experimental: {
-    outputFileTracingIncludes: {
-      "/*": [
-        "./node_modules/.prisma/client/**/*",
-        "./src/generated/prisma/**/*",
-        "./.prisma/client/**/*"
-      ],
+     outputFileTracingIncludes: {
+      '/api/*': ['./node_modules/.prisma/client/*.wasm']
     },
-  }
 };
 
 export default nextConfig;
