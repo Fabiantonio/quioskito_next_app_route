@@ -10,7 +10,7 @@ const nextConfig = {
   },
   experimental: {
     outputFileTracingIncludes: {
-      "/*": ["./node_modules/.prisma/client/**/*"],
+      "/*": ["./node_modules/.prisma/client/**/*", "./.prisma/client/**/*"],
     },
   },
 };
