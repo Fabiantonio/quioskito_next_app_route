@@ -5,7 +5,6 @@ import Heading from "@/components/ui/Heading";
 import { prisma } from "@/src/lib/prisma";
 import { notFound } from "next/navigation";
 
-export const runtime = 'nodejs'
 
 
 async function getProductById(id: number) {
