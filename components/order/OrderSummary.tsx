@@ -13,7 +13,7 @@ export default function OrderSummary() {
   
   // Calculate subtotal, taxes, total
   const subtotal = useMemo(() => order.reduce((acc, item) => acc + (item.quantity * item.price), 0), [order]);
-  const taxes = subtotal * 0.10; // Assuming 10% tax for example, or hardcode/omit
+  //const taxes = subtotal * 0.10; // Assuming 10% tax for example, or hardcode/omit
   const total = subtotal; // If taxes are included or added. Image shows Subtotal 6.99, Taxes 0.51, Total 7.50. 
   // 0.51 is ~7.3% of 6.99. 
   // I will just use Total = Subtotal for simplicity unless tax logic is required. 

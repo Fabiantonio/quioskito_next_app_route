@@ -1,5 +1,5 @@
 "use client"
-import { Category } from "@/src/generated/prisma/browser";
+import { Category } from "@prisma/client";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";

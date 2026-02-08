@@ -1,5 +1,5 @@
-import { Product } from "@/src/generated/prisma/client"
-import { Order, OrderProducts,  } from "../generated/prisma/browser"
+import { Product } from "@prisma/client"
+import { Order, OrderProducts,  } from "@prisma/client"
 
 export type OrderItem = Pick<Product, 'id' | 'name' | 'price'> & {
     quantity: number
