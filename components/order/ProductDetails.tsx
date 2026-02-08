@@ -1,14 +1,14 @@
 import { useStore } from "@/src/store";
 import { OrderItem } from "@/src/types";
 import { formatCurrency } from "@/src/utils";
-import { MinusIcon, PlusIcon, XCircleIcon } from "@heroicons/react/24/outline";
+import { MinusIcon, PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useMemo } from "react";
 
 type ProductDetailsProps = {
   item: OrderItem;
 };
 
-const MAX_ITEMS = 5;
+const MAX_ITEMS = 10;
 const MIN_ITEMS = 1;
 
 export default function ProductDetails({ item }: ProductDetailsProps) {
@@ -22,43 +22,41 @@ export default function ProductDetails({ item }: ProductDetailsProps) {
     [item]
   );
   return (
-    <div className="shadow space-y-1 p-4 bg-white  border-t border-gray-200 animate-fadeInUp duration-300">
-      <div className="space-y-4">
-        <div className="flex justify-between items-start">
-          <p className="text-xl font-bold">{item.name} </p>
-
-          <button type="button" onClick={() => removeOrderItem(item.id)}>
-            <XCircleIcon className="text-red-600 h-8 w-8" />
-          </button>
+    <div className="py-4 border-b border-gray-100 last:border-b-0 animate-fadeInUp">
+      <div className="flex justify-between items-start mb-2">
+        <div>
+          <p className="text-base font-bold text-gray-800">{item.name}</p>
+          <p className="text-sm font-medium text-gray-500">{formatCurrency(item.price)}</p>
         </div>
-        <p className="text-2xl text-black font-black">
-          {formatCurrency(item.price)}
-        </p>
-        <div className="flex gap-5 px-10 py-2 bg-gray-100 w-fit rounded-lg">
+        <button 
+            type="button" 
+            onClick={() => removeOrderItem(item.id)}
+            className="text-gray-400 hover:text-red-500 transition-colors"
+        >
+            <TrashIcon className="h-5 w-5" />
+        </button>
+      </div>
+
+      <div className="flex items-center gap-3 mt-2">
           <button
-            className="disabled:opacity-20"
             type="button"
             onClick={() => decreaseQuantity(item.id)}
             disabled={disableDecreaseButton}
+            className="w-6 h-6 rounded-full bg-red-600 hover:bg-red-700 disabled:opacity-50 text-white flex items-center justify-center transition-colors"
           >
-            <MinusIcon className="h-6 w-6 " />
+            <MinusIcon className="h-3 w-3" />
           </button>
 
-          <p className="text-lg font-black ">{item.quantity}</p>
+          <p className="text-sm font-bold text-gray-900 w-4 text-center">{item.quantity}</p>
 
           <button
-            className="disabled:opacity-20"
             type="button"
             onClick={() => increaseQuantity(item.id)}
             disabled={disableIncreaseButton}
+            className="w-6 h-6 rounded-full bg-red-600 hover:bg-red-700 disabled:opacity-50 text-white flex items-center justify-center transition-colors"
           >
-            <PlusIcon className="h-6 w-6" />
+            <PlusIcon className="h-3 w-3" />
           </button>
-        </div>
-        <p className="text-xl font-black text-gray-700">
-          Subtotal: {""}
-          <span className="font-normal">{formatCurrency(item.subTotal)}</span>
-        </p>
       </div>
     </div>
   );

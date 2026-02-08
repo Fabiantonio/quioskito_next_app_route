@@ -6,16 +6,15 @@ async function getCategories() {
   return await prisma.category.findMany();
 }
 
-export default async function OrderSideba() {
+export default async function OrderSidebar() {
   const categories = await getCategories();
   return (
-    <aside className="md:w-72 md:h-screen bg-white">
+    <aside className="md:w-72 md:h-screen bg-white flex flex-col">
       <Logo />
-      <nav className="mt-10">
+      <nav className="mt-10 flex-1">
+        <h2 className="text-xl font-bold text-gray-800 px-5 mb-4">Menu</h2>
         {categories.map((category) => (
-          <div key={category.id} className="flex items-center justify-center">
-            <CategoryIcon key={category.id} category={category} />
-          </div>
+          <CategoryIcon key={category.id} category={category} />
         ))}
       </nav>
     </aside>

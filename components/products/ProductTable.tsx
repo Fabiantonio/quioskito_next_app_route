@@ -1,6 +1,7 @@
 import { Category, Product } from "@/src/generated/prisma/client";
 import { formatCurrency } from "@/src/utils";
 import Link from "next/link";
+import { PencilSquareIcon } from "@heroicons/react/24/outline";
 
 type ProductTableProps = {
   products: ({
@@ -10,64 +11,53 @@ type ProductTableProps = {
 
 export default function ProductTable({ products }: ProductTableProps) {
   return (
-    <div className="px-4 sm:px-6 lg:px-8 mt-20">
-      <div className="mt-8 flow-root ">
-        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8 bg-white p-5 ">
-            <table className="min-w-full divide-y divide-gray-300 ">
-              <thead>
-                <tr>
-                  <th
-                    scope="col"
-                    className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
-                  >
-                    Producto
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >
-                    Precio
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >
-                    Categoría
-                  </th>
-                  <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
-                    <span className="sr-only">Acciones</span>
-                  </th>
+    <div className="mt-8 flow-root">
+        <div className="overflow-x-auto rounded-xl shadow-sm border border-gray-100 bg-white">
+          <table className="min-w-full divide-y divide-gray-100">
+            <thead className="bg-gray-50/50">
+              <tr>
+                <th scope="col" className="py-4 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500 sm:pl-6">
+                  Producto
+                </th>
+                <th scope="col" className="px-3 py-4 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                  Precio
+                </th>
+                <th scope="col" className="px-3 py-4 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                  Categoría
+                </th>
+                <th scope="col" className="relative py-4 pl-3 pr-4 sm:pr-6">
+                  <span className="sr-only">Acciones</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100 bg-white">
+              {products.map((product) => (
+                <tr key={product.id} className="hover:bg-gray-50/50 transition-colors">
+                  <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                    {product.name}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-600 font-medium">
+                    {formatCurrency(product.price)}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-4 text-sm">
+                    <span className="inline-flex items-center rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-600/20">
+                        {product.category.name}
+                    </span>
+                  </td>
+                  <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                    <Link
+                      href={`/admin/products/${product.id}/edit`}
+                      className="text-gray-400 hover:text-orange-600 transition-colors inline-block"
+                    >
+                      <PencilSquareIcon className="h-5 w-5" />
+                      <span className="sr-only">Editar, {product.name}</span>
+                    </Link>
+                  </td>
                 </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {products.map((product) => (
-                  <tr key={product.id}>
-                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                      {product.name}
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {formatCurrency(product.price)}
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {product.category.name}
-                    </td>
-                    <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                      <Link
-                        href={`/admin/products/${product.id}/edit`}
-                        className="text-blue-600 hover:text-blue-900 transition-colors"
-                      >
-                        Editar
-                        <span className="sr-only">, {product.name}</span>
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </div>
     </div>
   );
 }

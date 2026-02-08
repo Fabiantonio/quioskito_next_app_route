@@ -15,38 +15,38 @@ export default async function ProductForm({ product }: ProductFormProps) {
   return (
     <>
       <div className="space-y-2">
-        <label className="text-slate-800" htmlFor="name">
+        <label className="text-sm font-bold text-gray-700" htmlFor="name">
           Nombre:
         </label>
         <input
           id="name"
           type="text"
           name="name"
-          className="block w-full p-3 bg-slate-100"
-          placeholder="Nombre Producto"
+          className="block w-full p-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+          placeholder="Nombre del Producto"
           defaultValue={product?.name}
         />
       </div>
 
       <div className="space-y-2">
-        <label className="text-slate-800" htmlFor="price">
+        <label className="text-sm font-bold text-gray-700" htmlFor="price">
           Precio:
         </label>
         <input
           id="price"
           name="price"
-          className="block w-full p-3 bg-slate-100"
-          placeholder="Precio Producto"
+          className="block w-full p-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+          placeholder="Precio del Producto"
           defaultValue={product?.price?.toString()}
         />
       </div>
 
       <div className="space-y-2">
-        <label className="text-slate-800" htmlFor="categoryId">
+        <label className="text-sm font-bold text-gray-700" htmlFor="categoryId">
           Categoría:
         </label>
         <select
-          className="block w-full p-3 bg-slate-100"
+          className="block w-full p-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
           id="categoryId"
           name="categoryId"
           defaultValue={product?.categoryId}

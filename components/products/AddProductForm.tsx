@@ -37,13 +37,13 @@ export default function AddProductForm({
     router.push("/admin/products");
   };
   return (
-    <div className="bg-white mt-10 px-5 py-10 rounded-md shadow-md max-w-3xl mx-auto">
-      <form action={handleSubmit} className="space-y-5">
+    <div className="bg-white px-8 py-10 rounded-2xl shadow-sm border border-gray-100 max-w-2xl mx-auto">
+      <form action={handleSubmit} className="space-y-6">
         {children}
         <input
           type="submit"
-          className="w-full bg-black hover:bg-gray-800 transition-colors text-white px-4 py-2 rounded-md cursor-pointer"
-          value="Crear"
+          className="w-full bg-red-600 hover:bg-red-700 transition-colors text-white font-bold py-3.5 rounded-xl cursor-pointer shadow-sm hover:shadow"
+          value="Crear Producto"
         />
       </form>
     </div>

@@ -23,12 +23,12 @@ export default function ProductSearchForm() {
       <input
         type="text"
         name="search"
-        className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+        placeholder="Buscar producto..."
+        className="px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm w-full sm:w-64 transition-all"
       />
       <button
         type="submit"
-        value={"Buscar"}
-        className="px-4 py-2 rounded-md text-white bg-black hover:bg-gray-800 transition-colors shadow-sm"
+        className="px-4 py-2.5 rounded-xl text-white bg-gray-900 hover:bg-gray-800 transition-colors shadow-sm text-sm font-medium"
       >
         Buscar
       </button>

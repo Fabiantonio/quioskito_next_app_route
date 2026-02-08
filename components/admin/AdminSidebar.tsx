@@ -9,18 +9,22 @@ const adminNavigation = [
 
 export default function AdminSidebar() {
   return (
-    <>
-      <Logo />
-      <div className="space-y-3 ">
-        <p className="mt-10 uppercase font-bold text-sm text-gray-600 text-center">
-          Navegación
-        </p>
-        <nav className="flex flex-col">
-          {adminNavigation.map(link => (
-            <AdminRoute key={link.url} link={link}/>
-          ))}
-        </nav>
+    <div className="bg-white h-full flex flex-col border-r border-gray-100 shadow-sm">
+      <div className="p-4 border-b border-gray-100">
+        <Logo />
       </div>
-    </>
+      <div className="flex-1 py-6 px-4 space-y-6">
+        <div>
+            <p className="px-2 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
+            Navegación
+            </p>
+            <nav className="flex flex-col gap-1">
+            {adminNavigation.map(link => (
+                <AdminRoute key={link.url} link={link}/>
+            ))}
+            </nav>
+        </div>
+      </div>
+    </div>
   );
 }

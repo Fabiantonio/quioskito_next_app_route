@@ -11,20 +11,26 @@ type CategoryIconProps = {
 
 export default function CategoryIcon({ category }: CategoryIconProps) {
   const params = useParams<{ category: string }>();
+  const isActive = params.category === category.slug;
 
   return (
     <div
-      className={`${params.category === category.slug ? 'bg-gray-300' : ''} flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b transition-colors duration-300`}
+      className={`${isActive ? 'bg-orange-50 border-l-4 border-orange-500' : 'border-transparent'} flex items-center gap-4 w-full p-3 transition-colors duration-300 hover:bg-orange-50 cursor-pointer`}
     >
-        <div>
+        <div className="w-8 h-8 relative">
             <Image
                 src={`/icon_${category.slug}.svg`}
                 alt={`Imagen de la categoria ${category.name}`}
-                width={50}
-                height={50}
+                fill
+                className="object-contain"
             />
         </div>
-        <Link href={`/order/${category.slug}`} className="text-lg font-medium text-gray-900">{category.name}</Link>
+        <Link 
+            href={`/order/${category.slug}`} 
+            className={`text-lg font-medium ${isActive ? 'text-black' : 'text-gray-500'}`}
+        >
+            {category.name}
+        </Link>
     </div>
   );
 }
